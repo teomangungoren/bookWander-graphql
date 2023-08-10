@@ -1,0 +1,49 @@
+scalar BigDecimal
+
+type Query{
+    getAllAuthors:[AuthorDto]
+    getAllBooks:[BookDto]
+    getAuthorById(id:ID!):AuthorDto
+    findBookById(id:ID!):BookDto
+}
+type Mutation{
+    createAuthor(createAuthorRequest:CreateAuthorRequest):AuthorDto
+    createBook(id:String,createBookRequest:CreateBookRequest):BookDto
+}
+
+type AuthorDto{
+    id:ID!
+    name:String
+    surname:String
+    books:[BookDto]
+}
+
+type BookDto{
+    id:ID
+    title:String
+    pages:BigDecimal
+    author:AuthorDto
+    category:Category
+}
+enum Category{
+    NOVEL
+    BIOGRAPHY
+    HISTORY
+    SELF_HELP
+    COOKING
+    TRAVEL
+    SCIENCE
+    CHILDREN
+    ART
+    BUSINESS
+}
+input  CreateBookRequest{
+    authorId:ID
+    title:String
+    pages:BigDecimal
+    category:Category
+}
+input CreateAuthorRequest{
+    name:String
+    surname:String
+}
