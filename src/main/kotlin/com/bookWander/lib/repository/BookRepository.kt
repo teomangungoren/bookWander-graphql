@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface BookRepository : JpaRepository<Book, String> {
-    fun findBookById(id: String): Book
+    fun findBookById(id: String): Book?
 }

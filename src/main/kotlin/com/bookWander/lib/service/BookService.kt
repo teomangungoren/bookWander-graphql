@@ -2,6 +2,7 @@ package com.bookWander.lib.service
 
 import com.bookWander.lib.dto.BookDto
 import com.bookWander.lib.dto.CreateBookRequest
+import com.bookWander.lib.exception.BookNotFoundException
 import com.bookWander.lib.model.Book
 import com.bookWander.lib.repository.BookRepository
 import org.springframework.stereotype.Service
@@ -25,6 +26,7 @@ class BookService(private val bookRepository: BookRepository, private val author
 
     fun getBookById(bookId: String): BookDto {
         val book = bookRepository.findBookById(bookId)
+            ?: throw BookNotFoundException("book with the ID $bookId could not be found ")
         return BookDto.convert(book)
     }
 }
