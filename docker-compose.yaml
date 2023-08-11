@@ -10,13 +10,15 @@ services:
       - "8080:8080"
     depends_on:
       - db
+    env_file:
+      - lib.env
 
   db:
     image: postgres:latest
     environment:
       POSTGRES_DB: lib
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: teo123
+      POSTGRES_USER: ${SPRING_DATASOURCE_USERNAME}
+      POSTGRES_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
     ports:
       - "5432:5432"
 

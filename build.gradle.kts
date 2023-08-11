@@ -21,7 +21,6 @@ repositories {
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	implementation("org.springframework.boot:spring-boot-starter-data-redis")
 	implementation("org.springframework.boot:spring-boot-starter-graphql")
 	implementation("com.graphql-java:graphql-java-extended-scalars:20.2")
 	implementation("org.springframework.boot:spring-boot-starter-web")
@@ -43,4 +42,14 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+}
+
+tasks.jar {
+	enabled = true
+	// Remove `plain` postfix from jar file name
+	archiveClassifier.set("")
+
+	manifest {
+		attributes["Main-Class"] = "com.bookWander.lib.LibApplication"
+	}
 }
