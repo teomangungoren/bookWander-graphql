@@ -10,9 +10,8 @@ class GraphQLConfig {
 
     @Bean
     fun runtimeWiringConfigurer(): RuntimeWiringConfigurer {
-        return RuntimeWiringConfigurer { wiringBuilder->
-            wiringBuilder.scalar(ExtendedScalars.GraphQLBigDecimal);
+        return RuntimeWiringConfigurer { wiringBuilder ->
+            wiringBuilder.scalar(ExtendedScalars.GraphQLBigDecimal)
         }
     }
-
 }

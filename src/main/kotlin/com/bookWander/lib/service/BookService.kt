@@ -8,24 +8,23 @@ import org.springframework.stereotype.Service
 import java.util.stream.Collectors
 
 @Service
-class BookService(private val bookRepository: BookRepository,private val authorService: AuthorService) {
+class BookService(private val bookRepository: BookRepository, private val authorService: AuthorService) {
 
-    fun getAllBooks():List<BookDto>{
+    fun getAllBooks(): List<BookDto> {
         return bookRepository.findAll()
             .stream()
             .map(BookDto::convert)
-            .collect(Collectors.toList());
+            .collect(Collectors.toList())
     }
 
-    fun createBook(authorId:String, createBookRequest: CreateBookRequest):BookDto{
-        val author=authorService.findAuthorById(authorId);
-        val book=Book("",createBookRequest.title,createBookRequest.pages,author,createBookRequest.category);
-        return BookDto.convert(bookRepository.save(book));
+    fun createBook(authorId: String, createBookRequest: CreateBookRequest): BookDto {
+        val author = authorService.findAuthorById(authorId)
+        val book = Book("", createBookRequest.title, createBookRequest.pages, author, createBookRequest.category)
+        return BookDto.convert(bookRepository.save(book))
     }
 
-    fun getBookById(bookId:String):BookDto{
-        val book=bookRepository.findBookById(bookId);
-        return BookDto.convert(book);
+    fun getBookById(bookId: String): BookDto {
+        val book = bookRepository.findBookById(bookId)
+        return BookDto.convert(book)
     }
-
 }

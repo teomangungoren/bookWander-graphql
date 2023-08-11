@@ -1,6 +1,6 @@
 package com.bookWander.lib.model
 
-import jakarta.persistence.*
+import jakarta.persistence.* // ktlint-disable no-wildcard-imports
 import org.hibernate.annotations.GenericGenerator
 import java.math.BigDecimal
 
@@ -8,16 +8,15 @@ import java.math.BigDecimal
 data class Book(
     @Id
     @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name ="UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    val id:String?,
-    val title:String?,
-    val pages:BigDecimal?,
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    val id: String?,
+    val title: String?,
+    val pages: BigDecimal?,
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
-    val author:Author?,
+    val author: Author?,
 
     @Enumerated(EnumType.STRING)
-    val category:Category?
+    val category: Category?,
 
 )
-

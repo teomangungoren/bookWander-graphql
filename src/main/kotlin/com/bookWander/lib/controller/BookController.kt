@@ -11,17 +11,17 @@ import org.springframework.stereotype.Controller
 @Controller
 class BookController(private val bookService: BookService) {
     @QueryMapping
-    fun getAllBooks():List<BookDto>{
-        return bookService.getAllBooks();
+    fun getAllBooks(): List<BookDto> {
+        return bookService.getAllBooks()
     }
 
     @QueryMapping
-    fun getBookById(@Argument id:String): BookDto {
-        return bookService.getBookById(id);
+    fun getBookById(@Argument id: String): BookDto {
+        return bookService.getBookById(id)
     }
 
     @MutationMapping
-    fun createBook(@Argument id:String, @Argument createBookRequest: CreateBookRequest):BookDto {
-        return bookService.createBook(id,createBookRequest);
+    fun createBook(@Argument id: String, @Argument createBookRequest: CreateBookRequest): BookDto {
+        return bookService.createBook(id, createBookRequest)
     }
 }

@@ -5,15 +5,14 @@ import com.bookWander.lib.model.Category
 import java.math.BigDecimal
 
 data class BookDto(
-    val id:String?,
-    val title:String?,
+    val id: String?,
+    val title: String?,
     val pages: BigDecimal?,
-    val author:AuthorDto?,
-    val category: Category?
-){
+    val author: AuthorDto?,
+    val category: Category?,
+) {
 
-    companion object
-    {
+    companion object {
         @JvmStatic
         fun convert(from: Book): BookDto {
             return BookDto(
@@ -21,7 +20,7 @@ data class BookDto(
                 from.title,
                 from.pages,
                 AuthorDto.convert(from.author!!),
-                from.category
+                from.category,
             )
         }
     }

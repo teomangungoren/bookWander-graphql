@@ -12,18 +12,17 @@ import org.springframework.stereotype.Controller
 class AuthorController(private val authorService: AuthorService) {
 
     @QueryMapping
-    fun getAllAuthors():List<AuthorDto>{
-        return authorService.getAllAuthors();
+    fun getAllAuthors(): List<AuthorDto> {
+        return authorService.getAllAuthors()
     }
 
     @QueryMapping
-    fun getAuthorById(@Argument id:String):AuthorDto{
-        return authorService.findAuthorDtoById(id);
+    fun getAuthorById(@Argument id: String): AuthorDto {
+        return authorService.findAuthorDtoById(id)
     }
 
     @MutationMapping
-    fun createAuthor(@Argument createAuthorRequest: CreateAuthorRequest):AuthorDto{
-        return authorService.createAuthor(createAuthorRequest);
-
+    fun createAuthor(@Argument createAuthorRequest: CreateAuthorRequest): AuthorDto {
+        return authorService.createAuthor(createAuthorRequest)
     }
 }
